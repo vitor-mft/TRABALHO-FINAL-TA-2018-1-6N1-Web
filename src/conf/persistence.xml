@@ -3,7 +3,7 @@
   <persistence-unit name="TRABALHO-FINAL-TA-2018-1-6N1-WebPU" transaction-type="JTA">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>jdbc/TrabalhoFinal</jta-data-source>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+     <class>br.edu.ifsul.modelo.Genero</class>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
