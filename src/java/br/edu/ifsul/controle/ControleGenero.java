@@ -29,7 +29,6 @@ public class ControleGenero implements Serializable{
     
     public String listar(){
         editando = false;
-        System.out.println("Chegou no Listar");
         return "/privado/genero/listar?faces-redirect=true";
     }
     

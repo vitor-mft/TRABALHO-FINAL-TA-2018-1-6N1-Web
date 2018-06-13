@@ -4,6 +4,7 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>jdbc/TrabalhoFinal</jta-data-source>
      <class>br.edu.ifsul.modelo.Genero</class>
+     <class>br.edu.ifsul.modelo.Autores</class>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>

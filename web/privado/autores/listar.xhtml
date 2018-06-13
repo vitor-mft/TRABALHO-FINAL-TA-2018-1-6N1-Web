@@ -6,32 +6,32 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/templates/template.xhtml">
-        <ui:define name="titulo">Manutenção de Generos</ui:define>
+        <ui:define name="titulo">Manutenção de Autores</ui:define>
         <ui:define name="conteudo">
             <h:form id="formListagem">
-                <h:panelGroup rendered="#{!controleGenero.editando}">
+                <h:panelGroup rendered="#{!controleAutores.editando}">
                     <p:messages/>
                     <p:commandButton value="Novo"
                                      icon="ui-icon-plus"
-                                     actionListener="#{controleGenero.novo()}"
-                                      update="formEdicao formListagem"/>
-                    <p:dataTable value="#{controleGenero.dao.listaObjetos}"
+                                     actionListener="#{controleAutores.novo()}"
+                                       update="formEdicao formListagem"/>
+                    <p:dataTable value="#{controleAutores.dao.listaObjetos}"
                                  var="obj" reflow="true" id="listagem">
                         <f:facet name="header">                            
                             <div class="ui-fluid" >
                                 <p:panelGrid columns="7" styleClass="ui-panelgrid-blank" layout="grid"
                                              columnClasses="col-md-1,col-md-2,col-md-1,col-md-3,col-md-2,col-md-2,col-md-1">
                                     <p:outputLabel value="Ordem:" />
-                                    <p:selectOneMenu value="#{controleGenero.dao.ordem}">  
+                                    <p:selectOneMenu value="#{controleAutores.dao.ordem}">  
                                         <f:selectItem itemLabel="ID" itemValue="id"/>   
                                         <f:selectItem itemLabel="Nome" itemValue="nome"/>
                                         <p:ajax update="listagem"/>
                                     </p:selectOneMenu>
                                     <p:outputLabel value="Filtro: "/>
-                                    <p:inputText value="#{controleGenero.dao.filtro}"/>                                                            
+                                    <p:inputText value="#{controleAutores.dao.filtro}"/>                                                            
                                     <p:commandButton value="Filtrar" update="listagem" icon="ui-icon-search"/>
                                     <p:outputLabel value="Máximo de objetos:"/>
-                                    <p:inputNumber value="#{controleGenero.dao.maximoObjetos}" size="3"
+                                    <p:inputNumber value="#{controleAutores.dao.maximoObjetos}" size="3"
                                                    thousandSeparator="" decimalSeparator="" decimalPlaces="0">
                                         <p:ajax event="blur" update="listagem"/> 
                                     </p:inputNumber>
@@ -39,14 +39,14 @@
                             </div>                                            
                         </f:facet>
                         <f:facet name="footer"> 
-                            <p:outputLabel value="#{controleGenero.dao.mensagemNavegacao} &nbsp; &nbsp;"/>
-                            <p:commandButton action="#{controleGenero.dao.primeiro()}"
+                            <p:outputLabel value="#{controleAutores.dao.mensagemNavegacao} &nbsp; &nbsp;"/>
+                            <p:commandButton action="#{controleAutores.dao.primeiro()}"
                                              icon="ui-icon-seek-first" title="Primeiro" update="listagem"/>
-                            <p:commandButton action="#{controleGenero.dao.anterior()}"
+                            <p:commandButton action="#{controleAutores.dao.anterior()}"
                                              icon="ui-icon-seek-prev" title="Anterior" update="listagem"/>
-                            <p:commandButton action="#{controleGenero.dao.proximo()}"
+                            <p:commandButton action="#{controleAutores.dao.proximo()}"
                                              icon="ui-icon-seek-next" title="Próximo" update="listagem"/>
-                            <p:commandButton action="#{controleGenero.dao.ultimo()}"
+                            <p:commandButton action="#{controleAutores.dao.ultimo()}"
                                              icon="ui-icon-seek-end" title="Ultimo" update="listagem"/>                                                        
                         </f:facet>
                         <p:column headerText="ID">
@@ -55,17 +55,15 @@
                         <p:column headerText="Nome">
                             <p:outputLabel value="#{obj.nome}"/>
                         </p:column>
-                        <p:column headerText="Descrição">
-                            <p:outputLabel value="#{obj.descricao}"/>
-                        </p:column>
+                      
                         <p:column headerText="Ações">
                             <div align="center">
                                 <p:commandButton icon="ui-icon-pencil" 
-                                                 actionListener="#{controleGenero.alterar(obj.id)}"
+                                                 actionListener="#{controleAutores.alterar(obj.id)}"
                                                  process="@this"
                                                  update="formListagem :formEdicao"/>
                                 <p:commandButton icon="ui-icon-trash"
-                                                 actionListener="#{controleGenero.excluir(obj.id)}"
+                                                 actionListener="#{controleAutores.excluir(obj.id)}"
                                                  process="@this"
                                                  update="formListagem"/>
                             </div>
