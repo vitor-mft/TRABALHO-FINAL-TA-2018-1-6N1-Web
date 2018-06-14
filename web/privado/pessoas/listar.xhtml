@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/templates/template.xhtml">
-        <ui:define name="titulo">Manutenção de Pessoass</ui:define>
+        <ui:define name="titulo">Manutenção de Pessoas</ui:define>
         <ui:define name="conteudo">
             <h:form id="formListagem">
                 <h:panelGroup rendered="#{!controlePessoas.editando}">
@@ -14,7 +14,7 @@
                     <p:commandButton value="Novo"
                                      icon="ui-icon-plus"
                                      actionListener="#{controlePessoas.novo()}"
-                                      update="formEdicao formListagem"/>
+                                     update="formEdicao formListagem"/>
                     <p:dataTable value="#{controlePessoas.dao.listaObjetos}"
                                  var="obj" reflow="true" id="listagem">
                         <f:facet name="header">                            

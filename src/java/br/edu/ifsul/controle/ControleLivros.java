@@ -28,10 +28,9 @@ public class ControleLivros implements Serializable {
 
     @EJB
     private AutoresDAO<Autores> daoAutores;
-    
+
     @EJB
     private PessoasDAO<Pessoas> daoPessoas;
-
 
     public ControleLivros() {
         editando = false;
@@ -45,14 +44,14 @@ public class ControleLivros implements Serializable {
     public void novo() {
         editando = true;
         objeto = new Livros();
-        
+
     }
 
     public void alterar(Object id) {
         try {
             objeto = dao.getObjectById(id);
             editando = true;
-           
+
         } catch (Exception e) {
             Util.mensagemErro("Erro ao recuperar objeto: "
                     + Util.getMensagemErro(e));
@@ -83,7 +82,7 @@ public class ControleLivros implements Serializable {
             Util.mensagemErro("Erro ao persistir objeto: "
                     + Util.getMensagemErro(e));
         }
-    }
+    }    
 
     public LivrosDAO<Livros> getDao() {
         return dao;
@@ -124,9 +123,5 @@ public class ControleLivros implements Serializable {
     public void setDaoPessoas(PessoasDAO<Pessoas> daoPessoas) {
         this.daoPessoas = daoPessoas;
     }
-
- 
-
-  
 
 }

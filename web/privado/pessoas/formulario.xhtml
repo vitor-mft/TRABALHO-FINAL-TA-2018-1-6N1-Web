@@ -6,7 +6,82 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:form id="formEdicao">
         <h:panelGroup rendered="#{controlePessoas.editando}">
-            
+            <div class="ui-fluid">
+                <p:messages id="messages"/>
+                <p:panelGrid columns="2" columnClasses="ui-grid-col-2, ui-grid-col-20"
+                             layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <p:outputLabel value="Edição de Pessoas"/>
+                    </f:facet>
+                    <p:outputLabel value="ID"/>
+                    <p:inputText value="#{controlePessoas.objeto.id}"
+                                 size="5" readonly="true"/>
+                    <p:outputLabel value="Apelido" for="txtApelido"/>
+                    <p:inputText value="#{controlePessoas.objeto.apelido}"
+                                 id="txtApelido" size="50" maxlength="50"/>                   
+                    <p:outputLabel value="CPF" for="txtCPF"/>
+                    <p:inputMask id="txtCPF" value="#{controlePessoas.objeto.cpf}"
+                                 mask="99999999999" placeholder="Obrigatório" size="14"/>
+                    <p:outputLabel value="Senha" for="txtSenha"/>
+                    <p:password value="#{controlePessoas.objeto.senha}" redisplay="true"
+                                id="txtSenha" size="20" maxlength="20"/> 
+                    <p:commandButton value="Salvar"
+                                     icon="ui-icon-disk"
+                                     actionListener="#{controlePessoas.salvar()}"
+                                     update="formEdicao :formListagem"/>
+                </p:panelGrid>
+                <h:panelGroup id="painelTipo">
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-2, ui-grid-col-20"
+                                 layout="grid" styleClass="ui-panelgrid-blank"
+                                 rendered="#{controlePessoas.editandoTipo}">
+                        <f:facet name="header">
+                            <p:outputLabel value="Edição de tipo de pessoa"/>
+                        </f:facet>             
+                        <p:outputLabel value="Tipo" for="selectTipo"/>
+                        <p:selectOneMenu id="selectTipo" value="#{controlePessoas.tipo}"
+                                         filter="true">
+                            <f:converter converterId="converterTipo"/>
+                            <f:selectItem noSelectionOption="true"
+                                          itemLabel="Selecione um registro"/>
+                            <f:selectItems value="#{controlePessoas.daoTipo.listaTodos}"
+                                           var="t" itemLabel="#{t.titulo}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value=""/>
+                        <p:commandButton value="Salvar Tipo" icon="ui-icon-disk"
+                                         actionListener="#{controlePessoas.salvarTipo()}"
+                                         id="btnAdicionarTipo"
+                                         process="btnAdicionarTipo selectTipo"
+                                         update="messages painelTipo listagemTipo"/>                                         
+                    </p:panelGrid>                                                            
+                </h:panelGroup>    
+            </div>
+            <h:panelGroup id="listagemTipo">
+                <h:panelGroup rendered="#{!controlePessoas.editandoTipo}">
+                    <p:commandButton value="Novo Tipo"
+                                     actionListener="#{controlePessoas.novaTipo()}"
+                                     update="listagemTipo painelTipo"
+                                     process="@this"/>
+                    <p:dataTable value="#{controlePessoas.objeto.tipo}" var="t"
+                                 reflow="true">
+                        <f:facet name="header">
+                            <p:outputLabel value="Tipo da Pessoa"/>
+                        </f:facet>
+                        <p:column headerText="Titulo">
+                            <p:outputLabel value="#{t.titulo}"/>
+                        </p:column>
+                        <p:column headerText="Previlegio">
+                            <p:outputLabel value="#{t.previlegio}"/>
+                        </p:column>  
+                        <p:column headerText="Ações">
+                            <div align="center">
+                                <p:commandButton icon="ui-icon-trash"
+                                                 actionListener="#{controlePessoas.removerTipo(t)}"
+                                                 process="@this" update="@form"/>                                                 
+                            </div>
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGroup>
+            </h:panelGroup>
         </h:panelGroup>
     </h:form>
 </html>

@@ -23,9 +23,8 @@ public class DAOGenerico<TIPO> implements Serializable {
     protected Integer totalObjetos = 0;
 
     public DAOGenerico() {
-
-    }
-      
+        
+    }    
 
     public List<TIPO> getListaObjetos() {
         String jpql = "from " + classePersistente.getSimpleName();
