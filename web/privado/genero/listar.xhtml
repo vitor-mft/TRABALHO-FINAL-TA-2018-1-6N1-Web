@@ -67,7 +67,8 @@
                                 <p:commandButton icon="ui-icon-trash"
                                                  actionListener="#{controleGenero.excluir(obj.id)}"
                                                  process="@this"
-                                                 update="formListagem"/>
+                                                 update="formListagem"
+                                                    rendered="#{p:ifGranted('CHEFE')}"/>
                             </div>
                         </p:column>
                     </p:dataTable>

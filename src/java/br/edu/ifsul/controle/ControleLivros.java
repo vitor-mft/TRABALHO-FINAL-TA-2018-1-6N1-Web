@@ -13,9 +13,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author Prof. Me. Jorge Luis Boeira Bavaresco
- * @email jorge.bavaresco@passofundo.ifsul.edu.br
- * @organization IFSUL - Campus Passo Fundo
+ * @author V_M_FT
  */
 @Named(value = "controleLivros")
 @ViewScoped

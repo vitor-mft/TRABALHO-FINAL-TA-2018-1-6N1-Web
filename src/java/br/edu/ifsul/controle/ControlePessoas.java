@@ -8,6 +8,7 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.persistence.Query;
 
 /**
  *
@@ -144,4 +145,6 @@ public class ControlePessoas implements Serializable {
         this.editandoTipo = editandoTipo;
     }
 
+    
+    
 }

@@ -51,7 +51,8 @@
                     <p:commandButton value="Salvar"
                                      icon="ui-icon-disk"
                                      actionListener="#{controleLivros.salvar()}"
-                                     update="formEdicao :formListagem"/>
+                                     update="formEdicao :formListagem"
+                                        rendered="#{p:ifGranted('CHEFE')}"/>
                 </p:panelGrid>                
             </div>
         </h:panelGroup>
